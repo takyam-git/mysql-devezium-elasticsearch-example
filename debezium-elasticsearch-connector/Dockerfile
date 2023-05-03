@@ -35,6 +35,9 @@ RUN curl -sfSL https://repo1.maven.org/maven2/org/elasticsearch/elasticsearch-co
 RUN curl -sfSL https://repo1.maven.org/maven2/org/elasticsearch/plugin/lang-mustache-client/${ELASTICSEARCH_VERSION}/lang-mustache-client-${ELASTICSEARCH_VERSION}.jar \
     -o ${KAFKA_CONNECT_PLUGINS_DIR}/elasticsearch-connector/lang-mustache-client-${ELASTICSEARCH_VERSION}.jar
 
+RUN curl -sfSL https://repo1.maven.org/maven2/org/elasticsearch/plugin/rank-eval-client/${ELASTICSEARCH_VERSION}/rank-eval-client-${ELASTICSEARCH_VERSION}.jar \
+    -o ${KAFKA_CONNECT_PLUGINS_DIR}/elasticsearch-connector/rank-eval-client-${ELASTICSEARCH_VERSION}.jar
+
 ENV APACHE_HTTPCOMPONENTS_HTTPCLIENT_VERSION="4.5.13"
 
 RUN curl -sfSL https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/${APACHE_HTTPCOMPONENTS_HTTPCLIENT_VERSION}/httpclient-${APACHE_HTTPCOMPONENTS_HTTPCLIENT_VERSION}.jar \
@@ -53,8 +56,18 @@ ENV APACHE_HTTPCOMPONENTS_HTTPASYNCCLIENT_VERSION="4.1.5"
 RUN curl -sfSL https://repo1.maven.org/maven2/org/apache/httpcomponents/httpasyncclient/${APACHE_HTTPCOMPONENTS_HTTPASYNCCLIENT_VERSION}/httpasyncclient-${APACHE_HTTPCOMPONENTS_HTTPASYNCCLIENT_VERSION}.jar \
     -o ${KAFKA_CONNECT_PLUGINS_DIR}/elasticsearch-connector/httpasyncclient-${APACHE_HTTPCOMPONENTS_HTTPASYNCCLIENT_VERSION}.jar
 
-ENV APACHE_LUCENE_LUCENE_CORE_VERSION="9.5.0"
+ENV APACHE_LUCENE_LUCENE_CORE_VERSION="8.11.2"
 
 RUN curl -sfSL https://repo1.maven.org/maven2/org/apache/lucene/lucene-core/${APACHE_LUCENE_LUCENE_CORE_VERSION}/lucene-core-${APACHE_LUCENE_LUCENE_CORE_VERSION}.jar \
     -o ${KAFKA_CONNECT_PLUGINS_DIR}/elasticsearch-connector/lucene-core-${APACHE_LUCENE_LUCENE_CORE_VERSION}.jar
+
+ENV APACHE_LOG4J_VERSION="2.17.1"
+
+RUN curl -sfSL https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/${APACHE_LOG4J_VERSION}/log4j-api-${APACHE_LOG4J_VERSION}.jar \
+    -o ${KAFKA_CONNECT_PLUGINS_DIR}/elasticsearch-connector/log4j-api-${APACHE_LOG4J_VERSION}.jar
+
+ENV APACHE_COMMONS_LOGGING_VERSION="1.2"
+
+RUN curl -sfSL https://repo1.maven.org/maven2/commons-logging/commons-logging/${APACHE_COMMONS_LOGGING_VERSION}/commons-logging-${APACHE_COMMONS_LOGGING_VERSION}.jar \
+    -o ${KAFKA_CONNECT_PLUGINS_DIR}/elasticsearch-connector/commons-logging-${APACHE_COMMONS_LOGGING_VERSION}.jar
 
